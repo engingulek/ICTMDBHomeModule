@@ -6,18 +6,24 @@
 //
 
 import UIKit
-
-public class HomeRouter :  PresenterToRouterHomeProtocol {
-   
+import ICTMDBModularProtocols
+import DependencyKit
+import ICTMDBViewKit
+public class HomeRouter : @preconcurrency PresenterToRouterHomeProtocol {
   
-    func toAllListPage(view:PresenterToViewHomeProtocol?,type:SectionType) {
-       
+    @MainActor func toAllListPage(view:PresenterToViewHomeProtocol?,type: SectionType) {
+        let listType : AllListType = type == .popular ? .popular : .airingToday
+        let allListModule = DependencyRegister.shared.resolve(AllListModuleProtocol.self)
+        let allListViewController = allListModule.createAllListModule(type: listType)
+        view?.pushViewControllerAble(allListViewController, animated: true)
+   
     }
     
-    func toDetailPage(view: (any PresenterToViewHomeProtocol)?, id: Int?) {
-        
+    @MainActor func toDetailPage(view: (any PresenterToViewHomeProtocol)?, id: Int?) {
+        let detailModule = DependencyRegister.shared.resolve(TvShowDetailProtocol.self)
+        let detailViewController = detailModule.createTvShowDetailModule(id: id)
+        view?.pushViewControllerAble(detailViewController, animated: true)
     }
-    
     
 
 }
