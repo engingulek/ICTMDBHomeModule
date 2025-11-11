@@ -1,5 +1,5 @@
 {
-  "originHash" : "10cd6d987118b15741845aceb0b2596ffbe87131a72d10be84b559e931858a35",
+  "originHash" : "cc79f7a25e5977a710a39d668b97f64e214bb913ce6cfc1efcdc1cdad00d554e",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/GenericCollectionViewKit",
       "state" : {
-        "revision" : "acfb4ff86f8d8cd7e73d59efe93a721722d03ccb",
-        "version" : "0.0.1"
+        "revision" : "316fcf9e353fa787ec8995948ac71bea46ddf288",
+        "version" : "0.0.2"
       }
     },
     {

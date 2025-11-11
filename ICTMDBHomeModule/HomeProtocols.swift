@@ -12,38 +12,38 @@ import GenericCollectionViewKit
 typealias Ables = UIViewAble & SegueAble
 
 protocol ViewToPresenterHomeProtocol: AnyObject,
-   GenericCollectionDataSourceProtocol,
-   GenericCollectionDelegateSourceProtocol,
-                                     GenericCollectionLayoutProviderProtocol{
-   var view : PresenterToViewHomeProtocol? {get}
-   func viewDidLoad()
+    GenericCollectionDataSourceProtocol,
+    GenericCollectionDelegateSourceProtocol,
+                                      GenericCollectionLayoutProviderProtocol{
+    var view : PresenterToViewHomeProtocol? {get}
+    func viewDidLoad()
 }
 
 
 protocol PresenterToViewHomeProtocol : AnyObject,Ables{
-   func relaodCollectionView()
-   func sendError(errorState: (isHidden:Bool,message:String))
-   func startLoading()
-   func finishLoading()
+    func relaodCollectionView()
+    func sendError(errorState: (isHidden:Bool,message:String))
+    func startLoading()
+    func finishLoading()
 }
 
 
 protocol PresenterToInteractorHomeProtocol {
-   var presenter: InteractorToPresenterHomeProtocol? {get set}
-   func loadPopularMovies()
-   func loadAiringMovies()
+    var presenter: InteractorToPresenterHomeProtocol? {get set}
+    func loadPopularMovies()
+    func loadAiringMovies()
 }
 
 
 protocol InteractorToPresenterHomeProtocol {
-   func sendPopularTvShows()
-   func sendAiringTvShows()
-   func sendError()
+    func sendPopularTvShows(_ data: [PopularTvShows])
+    func sendAiringTvShows(_ data: [AiringToday])
+    func sendError(_ type:HomePageErrorType)
 }
 
 protocol PresenterToRouterHomeProtocol {
     func toAllListPage(view:PresenterToViewHomeProtocol?,type:SectionType)
-   func toDetailPage(view:PresenterToViewHomeProtocol?,id:Int?)
+    func toDetailPage(view:PresenterToViewHomeProtocol?,id:Int?)
 }
 
 
