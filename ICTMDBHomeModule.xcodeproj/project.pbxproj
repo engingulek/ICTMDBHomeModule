@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7DD1A4C12EC3DECB0037DEAB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C02EC3DECB0037DEAB /* SnapKit */; };
+		7DD1A4C42EC3DEFF0037DEAB /* GenericCollectionViewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C32EC3DEFF0037DEAB /* GenericCollectionViewKit */; };
+		7DD1A4C72EC3DF140037DEAB /* ICTMDBModularProtocols in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C62EC3DF140037DEAB /* ICTMDBModularProtocols */; };
+		7DD1A4CA2EC3DF640037DEAB /* ICTMDBNetworkManagerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C92EC3DF640037DEAB /* ICTMDBNetworkManagerKit */; };
+		7DD1A4CD2EC3DFBB0037DEAB /* ICTMDBViewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4CC2EC3DFBB0037DEAB /* ICTMDBViewKit */; };
+		7DD1A4D02EC3DFCC0037DEAB /* DependencyKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4CF2EC3DFCC0037DEAB /* DependencyKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7DD1A4AE2EC3DD060037DEAB /* ICTMDBHomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICTMDBHomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +32,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD1A4C42EC3DEFF0037DEAB /* GenericCollectionViewKit in Frameworks */,
+				7DD1A4C12EC3DECB0037DEAB /* SnapKit in Frameworks */,
+				7DD1A4D02EC3DFCC0037DEAB /* DependencyKit in Frameworks */,
+				7DD1A4C72EC3DF140037DEAB /* ICTMDBModularProtocols in Frameworks */,
+				7DD1A4CA2EC3DF640037DEAB /* ICTMDBNetworkManagerKit in Frameworks */,
+				7DD1A4CD2EC3DFBB0037DEAB /* ICTMDBViewKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +91,12 @@
 			);
 			name = ICTMDBHomeModule;
 			packageProductDependencies = (
+				7DD1A4C02EC3DECB0037DEAB /* SnapKit */,
+				7DD1A4C32EC3DEFF0037DEAB /* GenericCollectionViewKit */,
+				7DD1A4C62EC3DF140037DEAB /* ICTMDBModularProtocols */,
+				7DD1A4C92EC3DF640037DEAB /* ICTMDBNetworkManagerKit */,
+				7DD1A4CC2EC3DFBB0037DEAB /* ICTMDBViewKit */,
+				7DD1A4CF2EC3DFCC0037DEAB /* DependencyKit */,
 			);
 			productName = ICTMDBHomeModule;
 			productReference = 7DD1A4AE2EC3DD060037DEAB /* ICTMDBHomeModule.framework */;
@@ -105,6 +126,14 @@
 			);
 			mainGroup = 7DD1A4A42EC3DD060037DEAB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7DD1A4BF2EC3DECB0037DEAB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7DD1A4C22EC3DEFF0037DEAB /* XCRemoteSwiftPackageReference "GenericCollectionViewKit" */,
+				7DD1A4C52EC3DF140037DEAB /* XCRemoteSwiftPackageReference "ICTMDBModularProtocols" */,
+				7DD1A4C82EC3DF640037DEAB /* XCRemoteSwiftPackageReference "ICTMDBNetworkManagerKit" */,
+				7DD1A4CB2EC3DFBB0037DEAB /* XCRemoteSwiftPackageReference "ICTMDBViewKit" */,
+				7DD1A4CE2EC3DFCC0037DEAB /* XCRemoteSwiftPackageReference "HPDependencyKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7DD1A4AF2EC3DD060037DEAB /* Products */;
 			projectDirPath = "";
@@ -357,6 +386,90 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7DD1A4BF2EC3DECB0037DEAB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		7DD1A4C22EC3DEFF0037DEAB /* XCRemoteSwiftPackageReference "GenericCollectionViewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/engingulek/GenericCollectionViewKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		7DD1A4C52EC3DF140037DEAB /* XCRemoteSwiftPackageReference "ICTMDBModularProtocols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/engingulek/ICTMDBModularProtocols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		7DD1A4C82EC3DF640037DEAB /* XCRemoteSwiftPackageReference "ICTMDBNetworkManagerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/engingulek/ICTMDBNetworkManagerKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		7DD1A4CB2EC3DFBB0037DEAB /* XCRemoteSwiftPackageReference "ICTMDBViewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/engingulek/ICTMDBViewKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
+		7DD1A4CE2EC3DFCC0037DEAB /* XCRemoteSwiftPackageReference "HPDependencyKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/engingulek/HPDependencyKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7DD1A4C02EC3DECB0037DEAB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4BF2EC3DECB0037DEAB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		7DD1A4C32EC3DEFF0037DEAB /* GenericCollectionViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4C22EC3DEFF0037DEAB /* XCRemoteSwiftPackageReference "GenericCollectionViewKit" */;
+			productName = GenericCollectionViewKit;
+		};
+		7DD1A4C62EC3DF140037DEAB /* ICTMDBModularProtocols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4C52EC3DF140037DEAB /* XCRemoteSwiftPackageReference "ICTMDBModularProtocols" */;
+			productName = ICTMDBModularProtocols;
+		};
+		7DD1A4C92EC3DF640037DEAB /* ICTMDBNetworkManagerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4C82EC3DF640037DEAB /* XCRemoteSwiftPackageReference "ICTMDBNetworkManagerKit" */;
+			productName = ICTMDBNetworkManagerKit;
+		};
+		7DD1A4CC2EC3DFBB0037DEAB /* ICTMDBViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4CB2EC3DFBB0037DEAB /* XCRemoteSwiftPackageReference "ICTMDBViewKit" */;
+			productName = ICTMDBViewKit;
+		};
+		7DD1A4CF2EC3DFCC0037DEAB /* DependencyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4CE2EC3DFCC0037DEAB /* XCRemoteSwiftPackageReference "HPDependencyKit" */;
+			productName = DependencyKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7DD1A4A52EC3DD060037DEAB /* Project object */;
 }
