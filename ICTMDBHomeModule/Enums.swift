@@ -6,13 +6,13 @@
 //
 
 enum CellItemType {
-    case popular
-    case airing
+    case popular(String)
+    case airing(String)
     case none
 }
 
 //MARK: SectionType
 enum SectionType: Int, CaseIterable {
     case popular
-    case onAir
+    case airingToday
 }
