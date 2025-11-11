@@ -51,9 +51,9 @@ final class HomeViewController: UIViewController {
             
             switch item {
             case .popular(let item):
-                if let c = cell as? PopularCell { c.configure() }
+                if let c = cell as? PopularCell { c.configure(with: item) }
             case .airing(let value):
-                if let c = cell as? AiringTodayCell { c.configure() }
+                if let c = cell as? AiringTodayCell { c.configure(with: value) }
             case .none:
                 break
             }
@@ -99,4 +99,3 @@ extension HomeViewController : @MainActor PresenterToViewHomeProtocol {
     let module = ICTMDBHomeModule()
     module.createHomeModule()
 }
-

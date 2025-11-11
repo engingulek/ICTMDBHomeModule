@@ -8,6 +8,7 @@
 import Foundation
 import GenericCollectionViewKit
 import ICTMDBViewKit
+import UIKit
 
 //MARK: CellItemType
 
@@ -18,6 +19,8 @@ final class HomePresenter {
     weak var view: PresenterToViewHomeProtocol?
     private var interactor : PresenterToInteractorHomeProtocol
     private var router : PresenterToRouterHomeProtocol
+    private var popularTvShows : [PopularTVShowPresentation] = []
+    private var airingTodayShows : [AiringTodayPresentation] = []
     init(view: PresenterToViewHomeProtocol?,
          interactor:PresenterToInteractorHomeProtocol,
          router : PresenterToRouterHomeProtocol
@@ -31,9 +34,10 @@ final class HomePresenter {
 //MARK: HomePresenter : ViewToPresenterHomeProtocol
 extension HomePresenter : ViewToPresenterHomeProtocol {
     
-    
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
+        interactor.loadPopularMovies()
+        interactor.loadAiringMovies()
     }
 }
 
@@ -55,9 +59,9 @@ extension HomePresenter {
         guard let sectionType = SectionType(rawValue: section) else {return 0}
         switch sectionType {
         case .popular:
-            return 5
+            return popularTvShows.count
         case .airingToday:
-            return 3
+            return  airingTodayShows.count
         }
     }
     
@@ -66,23 +70,31 @@ extension HomePresenter {
     }
     
     func cellForItem(section: Int,item:Int) -> CellItemType {
+       
         guard let sectionType = SectionType(rawValue: section) else { return .none }
         switch sectionType {
         case .popular:
-           
-            return .popular("popular")
+            let tvShow = popularTvShows[item]
+            return .popular(tvShow)
         case .airingToday:
-          
-            return .airing("airing")
+            let tvShow = airingTodayShows[item]
+            return .airing(tvShow)
         }
-      
         
     }
     
-    func didSelectItem(at indexPath: IndexPath) {
-       
+    func didSelectItem(section: Int, item: Int) {
+        guard let sectionType = SectionType(rawValue: section) else { return  }
+        switch sectionType {
+        case .popular:
+            let id = popularTvShows[item].id
+            router.toDetailPage(view: view, id: id)
+        case .airingToday:
+            let id = airingTodayShows[item].id
+            router.toDetailPage(view: view, id: id)
+        }
     }
-    
+ 
     func titleForSection(at section: Int) ->(
         title: String, sizeType:SectionSizeType,
         buttonType: [TitleForSectionButtonType]?) {
@@ -143,15 +155,29 @@ extension HomePresenter {
 
 //MARK: HomePresenter: InteractorToPresenterHomeProtocol
 extension HomePresenter: InteractorToPresenterHomeProtocol {
-    func sendAiringTvShows() {
-       
+    func sendAiringTvShows(_ data: [AiringToday]) {
+        view?.startLoading()
+        airingTodayShows  = data.map {
+            AiringTodayPresentation(
+                tvShow: $0)}
+        view?.sendError(errorState: (isHidden: false, message: ""))
+        view?.relaodCollectionView()
+        view?.finishLoading()
     }
     
-    func sendPopularTvShows() {
-        
+    func sendPopularTvShows(_ data: [PopularTvShows]) {
+        view?.startLoading()
+        popularTvShows = data.map {PopularTVShowPresentation(
+            tvShow: $0)}.sorted{$0.rating > $1.rating }
+        view?.sendError(errorState: (isHidden: false, message: ""))
+        view?.relaodCollectionView()
+        view?.finishLoading()
     }
     
-    func sendError() {
-       
+    func sendError(_ type: HomePageErrorType) {
+        view?.startLoading()
+        view?.sendError(errorState: (isHidden: true, message: LocalizableUI.somethingWentWrong.localized))
+        view?.relaodCollectionView()
+        view?.finishLoading()
     }
 }
