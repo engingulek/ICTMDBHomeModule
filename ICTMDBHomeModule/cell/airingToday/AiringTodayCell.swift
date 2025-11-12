@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import ICTMDBViewKit
 
+//MARK: AiringTodayCell
 final class AiringTodayCell: UICollectionViewCell {
     static let identifier = "AiringTodayCell"
     private lazy var posterImageView = ImageViewFactory.createImageView(ofType: .main)

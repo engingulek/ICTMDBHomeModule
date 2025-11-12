@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/GenericCollectionViewKit",
       "state" : {
-        "revision" : "316fcf9e353fa787ec8995948ac71bea46ddf288",
-        "version" : "0.0.2"
+        "revision" : "acfb4ff86f8d8cd7e73d59efe93a721722d03ccb",
+        "version" : "0.0.1"
       }
     },
     {

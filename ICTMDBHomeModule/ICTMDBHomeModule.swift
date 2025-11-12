@@ -10,6 +10,8 @@ import UIKit
 import ICTMDBModularProtocols
 import ICTMDBNetworkManagerKit
 
+// MARK: - ICTMDBHomeModule
+/// Responsible for creating the Home module and wiring VIPER components.
 public class ICTMDBHomeModule : @preconcurrency HomeModuleProtocol {
     public init() { }
     @MainActor public func createHomeModule() -> UIViewController {
