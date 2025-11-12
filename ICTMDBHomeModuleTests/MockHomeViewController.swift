@@ -10,6 +10,7 @@ import UIKit
 @testable import ICTMDBHomeModule
 
 final class MockHomeViewController: PresenterToViewHomeProtocol {
+    
   
     // MARK: - Mock Functions
 
@@ -19,6 +20,17 @@ final class MockHomeViewController: PresenterToViewHomeProtocol {
         invokedRelaodCollectionView = true
         invokedRelaodCollectionViewCount += 1
     }
+    
+    var invokedSetNavigationTitle = false
+    var invokedSetNavigationTitleCount = 0
+    var invokedSetNavigationTitleData: [(title: String,())] = []
+    func setNavigationTitle(title: String) {
+         invokedSetNavigationTitle = true
+         invokedSetNavigationTitleCount += 1
+        invokedSetNavigationTitleData.append((title: title, ()))
+
+    }
+    
 
     var invokedSendError = false
     var invokedSendErrorCount = 0

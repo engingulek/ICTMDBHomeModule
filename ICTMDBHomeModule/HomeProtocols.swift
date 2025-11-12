@@ -13,7 +13,7 @@ import UIKit
 
 // MARK: - Typealias
 /// Combines UIViewAble and SegueAble protocols for convenience.
-typealias Ables = UIViewAble & SegueAble
+typealias Ables = UIViewAble & SegueAble & NavConUIAble
 
 // MARK: - View → Presenter
 /// Protocol for communication from View to Presenter.

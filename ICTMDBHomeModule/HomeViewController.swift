@@ -135,5 +135,5 @@ extension HomeViewController: @MainActor PresenterToViewHomeProtocol {
 // MARK: - Preview
 #Preview {
     let module = ICTMDBHomeModule()
-    module.createHomeModule()
+    UINavigationController(rootViewController: module.createHomeModule())
 }

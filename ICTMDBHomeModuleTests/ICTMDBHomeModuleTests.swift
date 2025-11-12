@@ -42,6 +42,20 @@ struct ICTMDBHomeModuleTests {
         #expect(view.invokedSetBackColorAbleData == ["backColor"])
     }
     
+    
+    @Test("Set navigaiton title")
+    func testNavigationTitle() {
+        #expect(view.invokedSetNavigationTitle == false)
+        #expect(view.invokedSetNavigationTitleCount == 0)
+        
+        presenter.viewDidLoad()
+        
+        #expect(view.invokedSetNavigationTitle == true)
+        #expect(view.invokedSetNavigationTitleCount == 1)
+        #expect(view.invokedSetNavigationTitleData.map(\.title) == ["Home Page"])
+ 
+    }
+    
     @Test("Check number of sections")
     func testNumberOfSections() {
         presenter.viewDidLoad()
