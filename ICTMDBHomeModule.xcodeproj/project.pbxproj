@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D075A4B2EC4C5620011D7C5 /* ICTMDBViewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D075A4A2EC4C5620011D7C5 /* ICTMDBViewKit */; };
+		7D075A4F2EC4C6AC0011D7C5 /* GenericCollectionViewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D075A4E2EC4C6AC0011D7C5 /* GenericCollectionViewKit */; };
+		7D5165B52EC4CAFE00A91416 /* ICTMDBHomeModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD1A4AE2EC3DD060037DEAB /* ICTMDBHomeModule.framework */; };
+		7D5165B72EC4CB1C00A91416 /* ICTMDBViewKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7D075A4A2EC4C5620011D7C5 /* ICTMDBViewKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7DD1A4C12EC3DECB0037DEAB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C02EC3DECB0037DEAB /* SnapKit */; };
 		7DD1A4C42EC3DEFF0037DEAB /* GenericCollectionViewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C32EC3DEFF0037DEAB /* GenericCollectionViewKit */; };
 		7DD1A4C72EC3DF140037DEAB /* ICTMDBModularProtocols in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4C62EC3DF140037DEAB /* ICTMDBModularProtocols */; };
@@ -15,11 +19,41 @@
 		7DD1A4D02EC3DFCC0037DEAB /* DependencyKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD1A4CF2EC3DFCC0037DEAB /* DependencyKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7D075A3B2EC4BF1F0011D7C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DD1A4A52EC3DD060037DEAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DD1A4AD2EC3DD060037DEAB;
+			remoteInfo = ICTMDBHomeModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D5165B82EC4CB1C00A91416 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7D5165B72EC4CB1C00A91416 /* ICTMDBViewKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7D075A362EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ICTMDBHomeModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD1A4AE2EC3DD060037DEAB /* ICTMDBHomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICTMDBHomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		7D075A372EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ICTMDBHomeModuleTests;
+			sourceTree = "<group>";
+		};
 		7DD1A4B02EC3DD060037DEAB /* ICTMDBHomeModule */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ICTMDBHomeModule;
@@ -28,6 +62,16 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7D075A332EC4BF1F0011D7C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D075A4F2EC4C6AC0011D7C5 /* GenericCollectionViewKit in Frameworks */,
+				7D075A4B2EC4C5620011D7C5 /* ICTMDBViewKit in Frameworks */,
+				7D5165B52EC4CAFE00A91416 /* ICTMDBHomeModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DD1A4AB2EC3DD060037DEAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D075A492EC4C5620011D7C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7DD1A4A42EC3DD060037DEAB = {
 			isa = PBXGroup;
 			children = (
 				7DD1A4B02EC3DD060037DEAB /* ICTMDBHomeModule */,
+				7D075A372EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests */,
+				7D075A492EC4C5620011D7C5 /* Frameworks */,
 				7DD1A4AF2EC3DD060037DEAB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				7DD1A4AE2EC3DD060037DEAB /* ICTMDBHomeModule.framework */,
+				7D075A362EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +127,34 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7D075A352EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D075A3F2EC4BF1F0011D7C5 /* Build configuration list for PBXNativeTarget "ICTMDBHomeModuleTests" */;
+			buildPhases = (
+				7D075A322EC4BF1F0011D7C5 /* Sources */,
+				7D075A332EC4BF1F0011D7C5 /* Frameworks */,
+				7D075A342EC4BF1F0011D7C5 /* Resources */,
+				7D5165B82EC4CB1C00A91416 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D5165C32EC4CF8C00A91416 /* PBXTargetDependency */,
+				7D075A3C2EC4BF1F0011D7C5 /* PBXTargetDependency */,
+				7D5165C12EC4CF5100A91416 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7D075A372EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests */,
+			);
+			name = ICTMDBHomeModuleTests;
+			packageProductDependencies = (
+				7D075A4A2EC4C5620011D7C5 /* ICTMDBViewKit */,
+				7D075A4E2EC4C6AC0011D7C5 /* GenericCollectionViewKit */,
+			);
+			productName = ICTMDBHomeModuleTests;
+			productReference = 7D075A362EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7DD1A4AD2EC3DD060037DEAB /* ICTMDBHomeModule */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DD1A4B52EC3DD060037DEAB /* Build configuration list for PBXNativeTarget "ICTMDBHomeModule" */;
@@ -112,6 +194,9 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					7D075A352EC4BF1F0011D7C5 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					7DD1A4AD2EC3DD060037DEAB = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -140,11 +225,19 @@
 			projectRoot = "";
 			targets = (
 				7DD1A4AD2EC3DD060037DEAB /* ICTMDBHomeModule */,
+				7D075A352EC4BF1F0011D7C5 /* ICTMDBHomeModuleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7D075A342EC4BF1F0011D7C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DD1A4AC2EC3DD060037DEAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +248,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7D075A322EC4BF1F0011D7C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DD1A4AA2EC3DD060037DEAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -164,7 +264,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7D075A3C2EC4BF1F0011D7C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DD1A4AD2EC3DD060037DEAB /* ICTMDBHomeModule */;
+			targetProxy = 7D075A3B2EC4BF1F0011D7C5 /* PBXContainerItemProxy */;
+		};
+		7D5165C12EC4CF5100A91416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7D5165C02EC4CF5100A91416 /* ICTMDBViewKit */;
+		};
+		7D5165C32EC4CF8C00A91416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7D5165C22EC4CF8C00A91416 /* GenericCollectionViewKit */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		7D075A3D2EC4BF1F0011D7C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45DX68AP4J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = engingulek.ICTMDBHomeModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7D075A3E2EC4BF1F0011D7C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45DX68AP4J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = engingulek.ICTMDBHomeModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		7DD1A4B32EC3DD060037DEAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -367,6 +521,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7D075A3F2EC4BF1F0011D7C5 /* Build configuration list for PBXNativeTarget "ICTMDBHomeModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D075A3D2EC4BF1F0011D7C5 /* Debug */,
+				7D075A3E2EC4BF1F0011D7C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7DD1A4A82EC3DD060037DEAB /* Build configuration list for PBXProject "ICTMDBHomeModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -439,6 +602,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7D075A4A2EC4C5620011D7C5 /* ICTMDBViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4CB2EC3DFBB0037DEAB /* XCRemoteSwiftPackageReference "ICTMDBViewKit" */;
+			productName = ICTMDBViewKit;
+		};
+		7D075A4E2EC4C6AC0011D7C5 /* GenericCollectionViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4C22EC3DEFF0037DEAB /* XCRemoteSwiftPackageReference "GenericCollectionViewKit" */;
+			productName = GenericCollectionViewKit;
+		};
+		7D5165C02EC4CF5100A91416 /* ICTMDBViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4CB2EC3DFBB0037DEAB /* XCRemoteSwiftPackageReference "ICTMDBViewKit" */;
+			productName = ICTMDBViewKit;
+		};
+		7D5165C22EC4CF8C00A91416 /* GenericCollectionViewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD1A4C22EC3DEFF0037DEAB /* XCRemoteSwiftPackageReference "GenericCollectionViewKit" */;
+			productName = GenericCollectionViewKit;
+		};
 		7DD1A4C02EC3DECB0037DEAB /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7DD1A4BF2EC3DECB0037DEAB /* XCRemoteSwiftPackageReference "SnapKit" */;
