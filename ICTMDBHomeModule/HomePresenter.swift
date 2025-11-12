@@ -54,6 +54,8 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
     
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
+        //TODO: move to Localizable
+        view?.setNavigationTitle(title: "Home Page")
         interactor.loadPopularMovies()
         interactor.loadAiringMovies()
     }
