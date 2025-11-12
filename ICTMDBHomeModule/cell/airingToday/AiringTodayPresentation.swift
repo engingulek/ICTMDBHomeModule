@@ -5,6 +5,8 @@
 //  Created by Engin Gülek on 12.11.2025.
 //
 import ICTMDBViewKit
+
+//MARK: AiringTodayPresentation
 struct AiringTodayPresentation: Equatable {
     var id:Int?
     var title: String

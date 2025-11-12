@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import ICTMDBViewKit
 
+//MARK: PopularCell
 final class PopularCell: UICollectionViewCell {
     static let identifier: String = "PopularCell"
     

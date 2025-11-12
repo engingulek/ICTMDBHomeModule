@@ -4,7 +4,7 @@
 //
 //  Created by Engin Gülek on 12.11.2025.
 //
-
+//MARK: DataResult
 struct DataResult<T: Codable & Sendable>: Codable, Sendable {
     let page: Int
     let results: [T]
