@@ -6,13 +6,20 @@
 //
 
 enum CellItemType {
-    case popular
-    case airing
+    case popular(PopularTVShowPresentation)
+    case airing(AiringTodayPresentation)
     case none
 }
 
 //MARK: SectionType
 enum SectionType: Int, CaseIterable {
     case popular
-    case onAir
+    case airingToday
+}
+
+
+//MARK: HomePageErrorType
+enum HomePageErrorType {
+    case popular
+    case airingToday
 }

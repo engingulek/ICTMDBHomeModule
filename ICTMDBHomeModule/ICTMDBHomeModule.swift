@@ -8,14 +8,18 @@
 import Foundation
 import UIKit
 import ICTMDBModularProtocols
-public class ICTMDBHomeModule : HomeModuleProtocol {
+import ICTMDBNetworkManagerKit
+
+// MARK: - ICTMDBHomeModule
+/// Responsible for creating the Home module and wiring VIPER components.
+public class ICTMDBHomeModule : @preconcurrency HomeModuleProtocol {
     public init() { }
     @MainActor public func createHomeModule() -> UIViewController {
         
         let viewController = HomeViewController()
         
         let router = HomeRouter()
-        let interactor = HomeInteractor()
+        let interactor = HomeInteractor(network: NetworkManager())
         
         let presenter : any ViewToPresenterHomeProtocol & InteractorToPresenterHomeProtocol
         = HomePresenter(view: viewController, interactor: interactor,router: router)

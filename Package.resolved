@@ -1,5 +1,5 @@
 {
-  "originHash" : "cc79f7a25e5977a710a39d668b97f64e214bb913ce6cfc1efcdc1cdad00d554e",
+  "originHash" : "660c8245eb2fec31c113986d5df5197a2381680f2144947e9d067c4c48a4cd49",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/GenericCollectionViewKit",
       "state" : {
-        "revision" : "acfb4ff86f8d8cd7e73d59efe93a721722d03ccb",
-        "version" : "0.0.1"
+        "revision" : "316fcf9e353fa787ec8995948ac71bea46ddf288",
+        "version" : "0.0.2"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBViewKit",
       "state" : {
-        "revision" : "59a0f4675ec6e7c69a26e3277b659d8d6ab0135b",
-        "version" : "0.0.2"
+        "revision" : "be3081738b66acd58ebe28de2c62aca91e8afa18",
+        "version" : "0.0.3"
       }
     },
     {
