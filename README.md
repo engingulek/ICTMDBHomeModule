@@ -15,7 +15,7 @@ It is prepared specifically for the home screen.
     
   </li> 
   <li>
-    <a href="https://github.com/engingulek/ICTMDBNetworkManagerKit">ICTMDBModularProtocols</a>
+    <a href="https://github.com/engingulek/ICTMDBNetworkManagerKit">ICTMDBNetworkManagerKit</a>
     
   </li>
   <li>
