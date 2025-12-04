@@ -21,7 +21,7 @@ public class HomeRouter: @preconcurrency PresenterToRouterHomeProtocol {
     /// - Parameters:
     ///   - view: The current view conforming to `PresenterToViewHomeProtocol`.
     ///   - type: The section type (e.g., popular or airingToday).
-    @MainActor
+  
     func toAllListPage(view: PresenterToViewHomeProtocol?, type: SectionType) {
         // Determine the list type based on section
         let listType: AllListType = type == .popular ? .popular : .airingToday
@@ -41,7 +41,7 @@ public class HomeRouter: @preconcurrency PresenterToRouterHomeProtocol {
     /// - Parameters:
     ///   - view: The current view conforming to `PresenterToViewHomeProtocol`.
     ///   - id: The TV show ID to display details for.
-    @MainActor
+
     func toDetailPage(view: (any PresenterToViewHomeProtocol)?, id: Int?) {
         // Resolve Detail module dependency from DependencyRegister
         // Detail modülünü DependencyRegister üzerinden alır
