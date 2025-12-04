@@ -12,6 +12,7 @@ import UIKit
 
 // MARK: - HomePresenter
 /// Handles the presentation logic for the Home module.
+
 final class HomePresenter {
     
     // MARK: - Typealias
@@ -50,15 +51,40 @@ final class HomePresenter {
 
 // MARK: - ViewToPresenterHomeProtocol
 /// Handles actions triggered by the View layer.
+
 extension HomePresenter: ViewToPresenterHomeProtocol {
-    
+   
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
         //TODO: move to Localizable
         view?.setNavigationTitle(title: "Home Page")
-        interactor.loadPopularMovies()
-        interactor.loadAiringMovies()
+        
+        Task {@MainActor in
+          await loadData()
+        }
+      
+       
     }
+    
+    
+
+    @MainActor
+    func loadData() async {
+        // Sending 'self' risks causing data races
+        // Sending main actor-isolated 'self' into async let risks causing data races between nonisolated and main actor-isolated uses
+       
+        /*
+         async let popular = interactor.loadPopularMovies()
+        async let movies = interactor.loadAiringMovies()
+        await popular
+        await movies
+        */
+        
+        
+        await interactor.loadPopularMovies()
+        await interactor.loadAiringMovies()
+    }
+
 }
 
 
@@ -184,7 +210,7 @@ extension HomePresenter {
 
 // MARK: - InteractorToPresenterHomeProtocol
 /// Receives data from the Interactor and updates the view.
-extension HomePresenter: InteractorToPresenterHomeProtocol {
+extension HomePresenter:  InteractorToPresenterHomeProtocol {
     
     func sendAiringTvShows(_ data: [AiringToday]) {
         view?.startLoading()

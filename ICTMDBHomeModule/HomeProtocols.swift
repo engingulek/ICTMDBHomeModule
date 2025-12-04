@@ -17,6 +17,7 @@ typealias Ables = UIViewAble & SegueAble & NavConUIAble
 
 // MARK: - View → Presenter
 /// Protocol for communication from View to Presenter.
+@MainActor
 protocol ViewToPresenterHomeProtocol: AnyObject,
     GenericCollectionDataSourceProtocol,
     GenericCollectionDelegateSourceProtocol,
@@ -27,6 +28,7 @@ protocol ViewToPresenterHomeProtocol: AnyObject,
     
     /// Called when the view is loaded
     func viewDidLoad()
+   
 }
 
 // MARK: - Presenter → View
@@ -48,21 +50,23 @@ protocol PresenterToViewHomeProtocol: AnyObject, Ables {
 
 // MARK: - Presenter → Interactor
 /// Protocol defining communication from Presenter to Interactor.
-protocol PresenterToInteractorHomeProtocol {
-    
+@MainActor
+protocol PresenterToInteractorHomeProtocol:AnyObject {
+
     /// Reference to the Presenter layer
     var presenter: InteractorToPresenterHomeProtocol? { get set }
     
     /// Requests popular TV shows data
-    func loadPopularMovies()
+    func loadPopularMovies() async
     
     /// Requests airing today TV shows data
-    func loadAiringMovies()
+    func loadAiringMovies() async 
 }
+
 
 // MARK: - Interactor → Presenter
 /// Protocol for sending data or errors from Interactor to Presenter.
-protocol InteractorToPresenterHomeProtocol {
+protocol InteractorToPresenterHomeProtocol : AnyObject{
     
     /// Sends fetched popular TV shows
     func sendPopularTvShows(_ data: [PopularTvShows])
@@ -76,6 +80,7 @@ protocol InteractorToPresenterHomeProtocol {
 
 // MARK: - Presenter → Router
 /// Protocol for navigation actions from Presenter to Router.
+
 protocol PresenterToRouterHomeProtocol {
     
     /// Navigates to All List page

@@ -1,5 +1,5 @@
 {
-  "originHash" : "660c8245eb2fec31c113986d5df5197a2381680f2144947e9d067c4c48a4cd49",
+  "originHash" : "6572fffbed955ea16b146314c570f9a2766ca3700fdced94f48afb334f5ba1b7",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBNetworkManagerKit",
       "state" : {
-        "revision" : "1bfc3e242df133d9c74918a27e4bb305d159437a",
-        "version" : "0.0.2"
+        "revision" : "c39931f4fb42ee553ff38af589ba1e50b36aa121",
+        "version" : "0.0.5"
       }
     },
     {
