@@ -9,12 +9,12 @@ import Foundation
 import ICTMDBNetworkManagerKit
 
 
-final class HomeInteractor: PresenterToInteractorHomeProtocol {
-
+final class HomeInteractor: PresenterToInteractorHomeProtocol,@unchecked Sendable {
+  
     // MARK: - Properties
     
     /// Reference to the Presenter to send data or errors back.
-    var presenter: (any InteractorToPresenterHomeProtocol)?
+   weak var presenter: (any InteractorToPresenterHomeProtocol)?
     
     /// Network manager responsible for API requests.
     private let network: NetworkManagerProtocol
@@ -26,41 +26,20 @@ final class HomeInteractor: PresenterToInteractorHomeProtocol {
         self.network = network
     }
     
-    // MARK: - Popular TV Shows
-    
-    /// Requests popular TV shows data
-    func loadPopularMovies() async {
-        let request = PopularMoviesRequest(
-            language: deviceLanguageCode == .turkish ? .tr : .en,
-            page: 1
-        )
-
-        do {
-            let list = try await network.execute(request)
-             presenter?.sendPopularTvShows(list.results)
-        } catch {
-             presenter?.sendError(.popular)
-        }
-    }
-
-
-    
-    // MARK: - Airing Today TV Shows
-    
-    /// Requests airing today TV shows data
-    
-    func loadAiringMovies() async  {
-        let request = AiringTodayRequest(
-            language: deviceLanguageCode == .turkish ? .tr : .en,
-            page: 1
-        )
+    func loadData() async {
+        let popularMoviesRequest = PopularMoviesRequest(language: deviceLanguageCode == .turkish ? .tr : .en, page: 1)
+        let airingTodayRequest = AiringTodayRequest(language: deviceLanguageCode == .turkish ? .tr : .en, page: 1)
+        async let popularMovies = network.execute(popularMoviesRequest)
         
+        async let airingMovies = network.execute(airingTodayRequest)
+
         do {
-            let list = try await network.execute(request)
-             presenter?.sendAiringTvShows(list.results)
+            let (popularResult, airingResult) = try await (popularMovies, airingMovies)
+            
+            await presenter?.sendPopularTvShows(popularResult.results)
+            await presenter?.sendAiringTvShows(airingResult.results)
         } catch {
-             presenter?.sendError(.airingToday)
-          
+            await presenter?.sendError()
         }
     }
 }

@@ -1,13 +1,13 @@
 {
-  "originHash" : "6572fffbed955ea16b146314c570f9a2766ca3700fdced94f48afb334f5ba1b7",
+  "originHash" : "ac1a77b8692595cd039b028194b305e42def4dcb8e0945d60b88f79e05a9b381",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
-        "version" : "5.10.2"
+        "revision" : "7be73f6c2b5cd90e40798b06ebd5da8f9f79cf88",
+        "version" : "5.11.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/GenericCollectionViewKit",
       "state" : {
-        "revision" : "316fcf9e353fa787ec8995948ac71bea46ddf288",
-        "version" : "0.0.2"
+        "revision" : "a41d0a2baf33d22100708590eea147a6a3f7464d",
+        "version" : "0.0.7"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBViewKit",
       "state" : {
-        "revision" : "be3081738b66acd58ebe28de2c62aca91e8afa18",
-        "version" : "0.0.3"
+        "revision" : "695da5e3684f62b05dbe1bef0122e84297e4654a",
+        "version" : "0.0.7"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "4d75de347da985a70c63af4d799ed482021f6733",
-        "version" : "8.6.1"
+        "revision" : "d30a5fad881137e2267f96a8e3fc35c58999bb94",
+        "version" : "8.6.2"
       }
     },
     {

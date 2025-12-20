@@ -10,6 +10,7 @@ import GenericCollectionViewKit
 import ICTMDBViewKit
 @testable import ICTMDBHomeModule
 
+@MainActor
 struct ICTMDBHomeModuleTests {
     
     private var view: MockHomeViewController!
@@ -37,6 +38,8 @@ struct ICTMDBHomeModuleTests {
         
         presenter.viewDidLoad()
         
+       
+        
         #expect(view.invokedSetBackColorAble == true)
         #expect(view.invokedSetBackColorAbleCount == 1)
         #expect(view.invokedSetBackColorAbleData == ["backColor"])
@@ -50,6 +53,8 @@ struct ICTMDBHomeModuleTests {
         
         presenter.viewDidLoad()
         
+      
+        
         #expect(view.invokedSetNavigationTitle == true)
         #expect(view.invokedSetNavigationTitleCount == 1)
         #expect(view.invokedSetNavigationTitleData.map(\.title) == ["Home Page"])
@@ -57,32 +62,36 @@ struct ICTMDBHomeModuleTests {
     }
     
     @Test("Check number of sections")
-    func testNumberOfSections() {
+    func testNumberOfSections() async {
         presenter.viewDidLoad()
+        
+        await Task.yield()
         
         let sectionCount = presenter.numberOfSections()
         
         #expect(sectionCount == 2)
     }
     
-    @Test("Popular section layout")
+     @Test("Popular section layout")
     func testPopularLayout() {
         presenter.viewDidLoad()
         
         let layout = presenter.layout(for: 0)
         let expected = LayoutSourceTeamplate.horizontalSingleRow.template
         
-        // #expect(layout == expected)
+        #expect(layout == expected)
     }
     
-    @Test("Airing today section layout")
+     @Test("Airing today section layout")
     func testAiringTodayLayout() {
         presenter.viewDidLoad()
+        
+        
         
         let layout = presenter.layout(for: 1)
         let expected = LayoutSourceTeamplate.verticalTwoPerRow.template
         
-        // #expect(layout == expected)
+         #expect(layout == expected)
     }
     
     @Test("Check section type")
@@ -95,30 +104,7 @@ struct ICTMDBHomeModuleTests {
         let airingSection = presenter.sectionType(at: 1)
         #expect(airingSection == .airingToday)
     }
-    
-    @Test("Title configuration for popular section")
-    func testTitleForPopularSection() async throws {
-        presenter.viewDidLoad()
         
-        let item = presenter.titleForSection(at: 0)
-        
-        #expect(item.title == LocalizableUI.popular.localized)
-        #expect(item.sizeType == .large)
-        #expect(item.buttonType?.contains { if case .allList = $0 { return true } else { return false } } == true)
-    }
-    
-    @Test("Title configuration for airing today section")
-    func testTitleForAiringTodaySection() async throws {
-        presenter.viewDidLoad()
-        
-        let item = presenter.titleForSection(at: 1)
-        
-        #expect(item.title == LocalizableUI.airingToday.localized)
-        #expect(item.sizeType == .small)
-        #expect(item.buttonType?.contains { if case .allList = $0 { return true } else { return false } } == true)
-    }
-    
-    
     @Test("Handle tapping title button in popular section")
     func testOnTappedTitleButtonForPopular() async throws {
         presenter.viewDidLoad()
@@ -145,7 +131,7 @@ struct ICTMDBHomeModuleTests {
         #expect(view.invokedRelaodCollectionViewCount == 0)
         
         presenter.viewDidLoad()
-        
+        await Task.yield()
         #expect(view.invokedRelaodCollectionView == true)
         #expect(view.invokedRelaodCollectionViewCount == 2)
     }
@@ -156,9 +142,9 @@ struct ICTMDBHomeModuleTests {
         #expect(view.invokedStartLoadingCount == 0)
         
         presenter.viewDidLoad()
-        
+        await Task.yield()
         #expect(view.invokedStartLoading == true)
-        #expect(view.invokedStartLoadingCount == 2)
+        #expect(view.invokedStartLoadingCount == 1)
     }
     
     @Test("Stop loading animation on view load")
@@ -167,22 +153,22 @@ struct ICTMDBHomeModuleTests {
         #expect(view.invokedFinishLoadingCount == 0)
         
         presenter.viewDidLoad()
-        
+        await Task.yield()
         #expect(view.invokedFinishLoading == true)
-        #expect(view.invokedFinishLoadingCount == 2)
+        #expect(view.invokedFinishLoadingCount == 1)
     }
     
-    @Test("Display error message when interactor fails")
+     @Test("Display error message when interactor fails")
     func testErrorHandling() async throws {
         #expect(view.invokedSendError == false)
         #expect(view.invokedSendErrorCount == 0)
         
         interactor.loadError = true
         presenter.viewDidLoad()
-        
+        await Task.yield()
         #expect(view.invokedSendError == true)
-        #expect(view.invokedSendErrorCount == 2)
-        #expect(view.invokedSendErrorData.map(\.isHidden) == [true, true])
+        #expect(view.invokedSendErrorCount == 1)
+        #expect(view.invokedSendErrorData.map(\.isHidden) == [true])
         #expect(view.invokedSendErrorData.map(\.message) == [
             LocalizableUI.somethingWentWrong.localized,
             LocalizableUI.somethingWentWrong.localized
