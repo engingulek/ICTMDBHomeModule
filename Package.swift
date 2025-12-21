@@ -4,8 +4,9 @@ import PackageDescription
 let package = Package(
     name: "ICTMDBHomeModule",
     defaultLocalization: "en",
+
     platforms: [
-        .iOS(.v18)
+        .iOS(.v26)
     ],
     products: [
         .library(
@@ -15,10 +16,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.0.1"),
-        .package(url: "https://github.com/engingulek/GenericCollectionViewKit",from:"0.0.2"),
+        .package(url: "https://github.com/engingulek/GenericCollectionViewKit",from:"0.0.4"),
         .package(url: "https://github.com/engingulek/ICTMDBModularProtocols", from: "0.0.1"),
-        .package(url: "https://github.com/engingulek/ICTMDBNetworkManagerKit", from: "0.0.2"),
-        .package(url: "https://github.com/engingulek/ICTMDBViewKit", from: "0.0.3"),
+        .package(url: "https://github.com/engingulek/ICTMDBNetworkManagerKit", from: "0.0.5"),
+        .package(url: "https://github.com/engingulek/ICTMDBViewKit", from: "0.0.7"),
         .package(url: "https://github.com/engingulek/HPDependencyKit", from: "1.0.0"),
     ],
     targets: [

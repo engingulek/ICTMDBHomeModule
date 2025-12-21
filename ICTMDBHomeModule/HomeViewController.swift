@@ -48,6 +48,7 @@ final class HomeViewController: UIViewController {
         setupCollectionView()
         collectionPrepareView()
         setupUI()
+       
     }
     
     
@@ -135,5 +136,6 @@ extension HomeViewController: @MainActor PresenterToViewHomeProtocol {
 // MARK: - Preview
 #Preview {
     let module = ICTMDBHomeModule()
-    UINavigationController(rootViewController: module.createHomeModule())
+    
+    return UINavigationController(rootViewController: module.createHomeModule())
 }

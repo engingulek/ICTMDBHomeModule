@@ -9,28 +9,18 @@ import Foundation
 @testable import ICTMDBHomeModule
 
 final class MockHomeInteractor : PresenterToInteractorHomeProtocol {
+   
     var presenter: (any InteractorToPresenterHomeProtocol)?
-    
     var loadError : Bool = false
     var airingTodayList : [AiringToday] = []
     var popularList : [PopularTvShows] = []
-    
-    func loadPopularMovies() {
+
+    func loadData() async {
         if loadError {
-            presenter?.sendError(.popular)
+            presenter?.sendError()
         }else{
-            print("testila")
             presenter?.sendPopularTvShows(popularList)
-        }
-    }
-    
-    func loadAiringMovies() {
-        if loadError {
-            presenter?.sendError(.airingToday)
-        }else{
             presenter?.sendAiringTvShows(airingTodayList)
         }
-        
-        
     }
 }

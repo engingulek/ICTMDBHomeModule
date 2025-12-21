@@ -13,7 +13,7 @@ import ICTMDBViewKit
 import UIKit
 
 /// `HomeRouter` is responsible for navigation in the Home module.
-public class HomeRouter: @preconcurrency PresenterToRouterHomeProtocol {
+public class HomeRouter:  PresenterToRouterHomeProtocol {
     
     // MARK: - Navigation to All List Page
     
@@ -21,7 +21,7 @@ public class HomeRouter: @preconcurrency PresenterToRouterHomeProtocol {
     /// - Parameters:
     ///   - view: The current view conforming to `PresenterToViewHomeProtocol`.
     ///   - type: The section type (e.g., popular or airingToday).
-    @MainActor
+  
     func toAllListPage(view: PresenterToViewHomeProtocol?, type: SectionType) {
         // Determine the list type based on section
         let listType: AllListType = type == .popular ? .popular : .airingToday
@@ -41,14 +41,11 @@ public class HomeRouter: @preconcurrency PresenterToRouterHomeProtocol {
     /// - Parameters:
     ///   - view: The current view conforming to `PresenterToViewHomeProtocol`.
     ///   - id: The TV show ID to display details for.
-    @MainActor
+
     func toDetailPage(view: (any PresenterToViewHomeProtocol)?, id: Int?) {
         // Resolve Detail module dependency from DependencyRegister
-        // Detail modülünü DependencyRegister üzerinden alır
         let detailModule = DependencyRegister.shared.resolve(TvShowDetailProtocol.self)
-        
         // Create the Detail view controller using module
-        // Modül üzerinden Detail view controller oluşturur
         let detailViewController = detailModule.createTvShowDetailModule(id: id)
         
         view?.pushViewControllerAble(detailViewController, animated: true)
