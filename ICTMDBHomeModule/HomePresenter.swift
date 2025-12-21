@@ -142,11 +142,13 @@ extension HomePresenter {
         case .popular:
             headerViewItem = .init(
                 title: LocalizableUI.popular.localized,
+                icon: .init(image: .systemImage("flame.fill"), tintColor: .custom(hex: "#FF0000")),
                 sizeType: .large,
                 buttonTypes: [.allList])
         case .airingToday:
             headerViewItem = .init(
                 title: LocalizableUI.airingToday.localized,
+                icon: .init(image: .systemImage("circle.fill"), tintColor: .custom(hex: "#008000")),
                 sizeType: .large,
                 buttonTypes: [.allList])
         }

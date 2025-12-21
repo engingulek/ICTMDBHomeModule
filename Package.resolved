@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBViewKit",
       "state" : {
-        "revision" : "695da5e3684f62b05dbe1bef0122e84297e4654a",
-        "version" : "0.0.7"
+        "revision" : "c2efbee26a375eb93cded92bccb9e5de9767499f",
+        "version" : "0.0.8"
       }
     },
     {
