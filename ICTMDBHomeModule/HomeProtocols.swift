@@ -50,22 +50,20 @@ protocol PresenterToViewHomeProtocol: AnyObject, Ables {
 
 // MARK: - Presenter → Interactor
 /// Protocol defining communication from Presenter to Interactor.
-@MainActor
-protocol PresenterToInteractorHomeProtocol:AnyObject {
+
+protocol PresenterToInteractorHomeProtocol:Sendable,AnyObject {
 
     /// Reference to the Presenter layer
     var presenter: InteractorToPresenterHomeProtocol? { get set }
-    
-    /// Requests popular TV shows data
-    func loadPopularMovies() async
-    
-    /// Requests airing today TV shows data
-    func loadAiringMovies() async 
+
+   // Requests data
+    func loadData() async
 }
 
 
 // MARK: - Interactor → Presenter
 /// Protocol for sending data or errors from Interactor to Presenter.
+@MainActor
 protocol InteractorToPresenterHomeProtocol : AnyObject{
     
     /// Sends fetched popular TV shows
@@ -75,7 +73,8 @@ protocol InteractorToPresenterHomeProtocol : AnyObject{
     func sendAiringTvShows(_ data: [AiringToday])
     
     /// Sends an error state
-    func sendError(_ type: HomePageErrorType)
+    func sendError()
+    
 }
 
 // MARK: - Presenter → Router

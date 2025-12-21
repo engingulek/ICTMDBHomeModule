@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 @testable import ICTMDBHomeModule
-
+@testable import GenericCollectionViewKit
 final class MockHomeViewController: PresenterToViewHomeProtocol {
     
   
@@ -73,4 +73,10 @@ final class MockHomeViewController: PresenterToViewHomeProtocol {
 
     
     
+}
+
+extension LayoutSource: Equatable {
+    public static func == (lhs: LayoutSource, rhs: LayoutSource) -> Bool {
+        return lhs.sectionInsets == rhs.sectionInsets && lhs.groupOrientation == rhs.groupOrientation && lhs.scrollDirection == rhs.scrollDirection
+    }
 }

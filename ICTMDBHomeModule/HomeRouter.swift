@@ -44,11 +44,8 @@ public class HomeRouter:  PresenterToRouterHomeProtocol {
 
     func toDetailPage(view: (any PresenterToViewHomeProtocol)?, id: Int?) {
         // Resolve Detail module dependency from DependencyRegister
-        // Detail modülünü DependencyRegister üzerinden alır
         let detailModule = DependencyRegister.shared.resolve(TvShowDetailProtocol.self)
-        
         // Create the Detail view controller using module
-        // Modül üzerinden Detail view controller oluşturur
         let detailViewController = detailModule.createTvShowDetailModule(id: id)
         
         view?.pushViewControllerAble(detailViewController, animated: true)

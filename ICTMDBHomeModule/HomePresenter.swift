@@ -53,36 +53,24 @@ final class HomePresenter {
 /// Handles actions triggered by the View layer.
 
 extension HomePresenter: ViewToPresenterHomeProtocol {
+  
+    
    
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
-        //TODO: move to Localizable
-        view?.setNavigationTitle(title: "Home Page")
+        view?.setNavigationTitle(title: LocalizableUI.homePageNavTitle.localized)
         
         Task {@MainActor in
           await loadData()
         }
-      
-       
     }
-    
     
 
     @MainActor
     func loadData() async {
-        // Sending 'self' risks causing data races
-        // Sending main actor-isolated 'self' into async let risks causing data races between nonisolated and main actor-isolated uses
-       
-        /*
-         async let popular = interactor.loadPopularMovies()
-        async let movies = interactor.loadAiringMovies()
-        await popular
-        await movies
-        */
-        
-        
-        await interactor.loadPopularMovies()
-        await interactor.loadAiringMovies()
+        view?.startLoading()
+        await interactor.loadData()
+        view?.finishLoading()
     }
 
 }
@@ -142,33 +130,28 @@ extension HomePresenter {
         }
     }
     
-
-    func titleForSection(at section: Int) -> (
-        title: String,
-        sizeType: SectionSizeType,
-        buttonType: [TitleForSectionButtonType]?
-    ) {
+    func titleForSection(at section: Int) -> GenericCollectionViewKit.HeaderViewItem {
+        var headerViewItem:HeaderViewItem
         guard let sectionType = SectionType(rawValue: section) else {
-            return (title: "", sizeType: .small, buttonType: [])
+            headerViewItem = .init(title: "", sizeType: .empty)
+            return headerViewItem
         }
-        
-        var item: (title: String, sizeType: SectionSizeType, buttonType: [TitleForSectionButtonType]?)
         
         switch sectionType {
         case .popular:
-            item = (
+            headerViewItem = .init(
                 title: LocalizableUI.popular.localized,
+                icon: .init(image: .systemImage("flame.fill"), tintColor: .custom(hex: "#FF0000")),
                 sizeType: .large,
-                buttonType: [.allList]
-            )
+                buttonTypes: [.allList])
         case .airingToday:
-            item = (
+            headerViewItem = .init(
                 title: LocalizableUI.airingToday.localized,
-                sizeType: .small,
-                buttonType: [.allList]
-            )
+                icon: .init(image: .systemImage("circle.fill"), tintColor: .custom(hex: "#008000")),
+                sizeType: .large,
+                buttonTypes: [.allList])
         }
-        return item
+        return headerViewItem
     }
     
 
@@ -210,32 +193,32 @@ extension HomePresenter {
 
 // MARK: - InteractorToPresenterHomeProtocol
 /// Receives data from the Interactor and updates the view.
-extension HomePresenter:  InteractorToPresenterHomeProtocol {
+extension HomePresenter: InteractorToPresenterHomeProtocol {
+    func sendError() {
+      
+        view?.sendError(errorState: (isHidden: true,
+                                     message: LocalizableUI.somethingWentWrong.localized))
+        view?.relaodCollectionView()
+      
+    }
+    
     
     func sendAiringTvShows(_ data: [AiringToday]) {
-        view?.startLoading()
+     
         airingTodayShows = data.map { AiringTodayPresentation(tvShow: $0) }
         view?.sendError(errorState: (isHidden: false, message: ""))
         view?.relaodCollectionView()
-        view?.finishLoading()
+      
     }
     
     func sendPopularTvShows(_ data: [PopularTvShows]) {
-        view?.startLoading()
+      
         popularTvShows = data
             .map { PopularTVShowPresentation(tvShow: $0) }
             .sorted { $0.rating > $1.rating }
         view?.sendError(errorState: (isHidden: false, message: ""))
         view?.relaodCollectionView()
-        view?.finishLoading()
-    }
-    
-    func sendError(_ type: HomePageErrorType) {
-        view?.startLoading()
-        view?.sendError(errorState: (isHidden: true,
-                                     message: LocalizableUI.somethingWentWrong.localized))
-        view?.relaodCollectionView()
-        view?.finishLoading()
+      
     }
 }
 
