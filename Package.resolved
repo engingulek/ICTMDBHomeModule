@@ -1,5 +1,5 @@
 {
-  "originHash" : "ac1a77b8692595cd039b028194b305e42def4dcb8e0945d60b88f79e05a9b381",
+  "originHash" : "728a65b7998119f654bb378e258af7947d2ff2ad0767bfa0ed28bf37cd1509fc",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBViewKit",
       "state" : {
-        "revision" : "c2efbee26a375eb93cded92bccb9e5de9767499f",
-        "version" : "0.0.8"
+        "revision" : "cb7d4f70a03495e409ff5ff76bb8141d737d7416",
+        "version" : "0.1.0"
       }
     },
     {

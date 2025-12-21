@@ -58,8 +58,7 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
    
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
-        //TODO: move to Localizable
-        view?.setNavigationTitle(title: "Home Page")
+        view?.setNavigationTitle(title: LocalizableUI.homePageNavTitle.localized)
         
         Task {@MainActor in
           await loadData()
