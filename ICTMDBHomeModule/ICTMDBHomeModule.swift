@@ -6,26 +6,13 @@
 //
 
 import Foundation
-import UIKit
-import ICTMDBModularProtocols
+import SwiftUI
+
 import ICTMDBNetworkManagerKit
 
-// MARK: - ICTMDBHomeModule
-/// Responsible for creating the Home module and wiring VIPER components.
-public class ICTMDBHomeModule : @MainActor HomeModuleProtocol {
-    public init() { }
-    @MainActor public func createHomeModule() -> UIViewController {
-        
-        let viewController = HomeViewController()
-        
-        let router = HomeRouter()
-        let interactor = HomeInteractor(network: NetworkManager())
-        
-        let presenter : any ViewToPresenterHomeProtocol & InteractorToPresenterHomeProtocol
-        = HomePresenter(view: viewController, interactor: interactor,router: router)
-        viewController.presenter = presenter
-        interactor.presenter = presenter
-        return viewController
-        
+final class ICTMDBHomeModule {
+    @MainActor   static func createModule() -> AnyView{
+        let view = HomeScreenView(viewModel: HomeViewModel(service: HomeService(networkManager: NetworkManager())))
+        return AnyView(view)
     }
 }
