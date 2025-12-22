@@ -8,15 +8,15 @@
 //MARK: AiringToday
 struct AiringToday: Codable,Sendable {
     let adult: Bool
-    let backdropPath: String
-    let genreIDS: [Int]
+    let backdropPath: String?
+    let genreIDS: [Int]?
     let id: Int
-    let originCountry: [String]
-    let originalLanguage, originalName, overview: String
-    let popularity: Double
-    let posterPath, firstAirDate, name: String
-    let voteAverage: Double
-    let voteCount: Int
+    let originCountry: [String]?
+    let originalLanguage, originalName, overview: String?
+    let popularity: Double?
+    let posterPath, firstAirDate, name: String?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult

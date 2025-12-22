@@ -30,9 +30,9 @@ struct AiringTodayPresentation: Equatable {
 extension AiringTodayPresentation {
     public init(tvShow: AiringToday) {
         self.id = tvShow.id
-        self.title = tvShow.name
-        self.flag = LanguageFlags.flag(for: tvShow.originalLanguage)
-        self.rating = tvShow.voteAverage
-        self.mainPoster = "https://image.tmdb.org/t/p/w500\(tvShow.posterPath)"
+        self.title = tvShow.name ?? ""
+        self.flag = LanguageFlags.flag(for: tvShow.originalLanguage ?? "")
+        self.rating = tvShow.voteAverage ?? 0.0
+        self.mainPoster = "https://image.tmdb.org/t/p/w500\(tvShow.posterPath ?? "")"
     }
 }

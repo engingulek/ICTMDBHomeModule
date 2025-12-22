@@ -41,12 +41,12 @@ struct PopularTVShowPresentation: Equatable {
 extension PopularTVShowPresentation {
     public init(tvShow: PopularTvShows) {
         self.id = tvShow.id
-        self.title = tvShow.name
-        self.year = tvShow.firstAirDate.toLongDateString() ?? tvShow.firstAirDate
-        self.rating = tvShow.voteAverage
-        self.info = tvShow.overview
-        self.mainPoster = "https://image.tmdb.org/t/p/w500\(tvShow.posterPath)"
-        self.backdropPoster = "https://image.tmdb.org/t/p/w500\(tvShow.backdropPath)"
-        self.flag = LanguageFlags.flag(for: tvShow.originalLanguage)
+        self.title = tvShow.name ?? ""
+        self.year = tvShow.firstAirDate?.toLongDateString() ?? ""
+        self.rating = tvShow.voteAverage ?? 0.0
+        self.info = tvShow.overview ?? ""
+        self.mainPoster = "https://image.tmdb.org/t/p/w500\(tvShow.posterPath ?? "")"
+        self.backdropPoster = "https://image.tmdb.org/t/p/w500\(tvShow.backdropPath ?? "")"
+        self.flag = LanguageFlags.flag(for: tvShow.originalLanguage ?? "")
     }
 }
