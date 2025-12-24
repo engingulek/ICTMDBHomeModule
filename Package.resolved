@@ -1,5 +1,5 @@
 {
-  "originHash" : "3146a9c77aa1ba3a07cf38d9771063def85b4f2ca98086db4c81fd99dea629cb",
+  "originHash" : "2c44b0954c7f14d6ec847e9e6f595e66d7dd9fe466ee0dd03062867395eb64b0",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/engingulek/ICTMDBViewKit",
       "state" : {
-        "revision" : "cb7d4f70a03495e409ff5ff76bb8141d737d7416",
-        "version" : "0.1.0"
+        "branch" : "version/swiftui",
+        "revision" : "608c4a5c1d81d3d2e999a839bcb23974f5a9aa7b"
       }
     },
     {

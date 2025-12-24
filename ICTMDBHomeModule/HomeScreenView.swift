@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ICTMDBViewKit
 struct HomeScreenView<VM:HomeViewModelProtocol>: View {
     @StateObject var viewModel:VM
     let columns = [
@@ -14,17 +15,26 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        ScrollView {
-            VStack(spacing:20){
-            PopularListView(list: viewModel.popularList)
-            AiringListView(list: viewModel.airingList)
-               
-           
-               
-                
-                Spacer()
-            }}.onAppear{
-            viewModel.task()
+        
+        VStack{
+            if viewModel.isLoading {
+                ProgressView()
+            }else{
+                if viewModel.isError.state{
+                    AppText(text: viewModel.isError.message, style: .error)
+                }else{
+                    ScrollView {
+                        VStack(spacing:20){
+                            PopularListView(list: viewModel.popularList, sectionHeaderData: viewModel.popularSectionHeaderData)
+                            AiringListView(list: viewModel.airingList, sectionHeaderData: viewModel.airingTodaySectionHeaderData)
+                            Spacer()
+                        }}
+                }
+              
+            }
+        }
+        .onAppear{
+            viewModel.onAppear()
         }
     }
 }

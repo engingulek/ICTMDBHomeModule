@@ -7,35 +7,25 @@
 
 import SwiftUI
 import Kingfisher
+import ICTMDBViewKit
 
 struct PopularItemView: View {
     let popular: PopularTVShowPresentation
     
     var body: some View {
         ZStack {
-            // 1. Arka Plan: Blur'lu Backdrop Görseli
-            KFImage(URL(string: popular.backdropPoster))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            // Layout Priority: Arka planın içeriği ezmemesi için
-            // ZStack'in boyutunu içeriğe göre belirlemesini sağlıyoruz.
-                .layoutPriority(-1)
-                .blur(radius: 10)
-                .overlay(Color.black.opacity(0.2))
-            
-            // 2. İçerik Katmanı
+            AppImage(
+                source: .remote(
+                    url: popular.backdropPoster,
+                    type: .backgroundBlur))
             HStack(alignment: .top, spacing: 12) {
-                
-                // Sol Taraf: Ana Poster
                 ZStack(alignment: .topTrailing) {
-                    KFImage(URL(string: popular.mainPoster))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit) // Oranı koruyarak sığdır
-                        .frame(width: UIScreen.main.bounds.width / 3) // Sadece genişlik veriyoruz
-                        .cornerRadius(8)
-                    
-                    Text(popular.flag)
-                        .font(.system(size: 20, weight: .semibold))
+                    AppImage(
+                        source: .remote(url: popular.mainPoster, type: .main))
+                    .containerRelativeFrame(.horizontal) { size, axis in
+                        size / 3
+                    }
+                    AppText(text: popular.flag, style: .cardSubTitle)
                         .padding([.top, .trailing], 5)
                 }
                 .padding(.vertical, 10)
@@ -43,34 +33,39 @@ struct PopularItemView: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(alignment: .top) {
-                        // Film Adı
-                        Text(popular.title)
-                            .font(.system(size: 25, weight: .semibold))
-                            .foregroundColor(.white)
-                            .lineLimit(1)
-                        
-                        
+                        AppText(text: popular.title, style: .heroTitle)
+                            .padding([.top, .trailing], 5)
                         Spacer()
-                        
                         RatingView(score: popular.rating, type: .popular)
                     }
-                    // Tarih (dateLabel)
-                    Text(popular.year)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.white.opacity(0.8))
-                    // Bilgi (infoLabel)
-                    Text(popular.info)
-                        .font(.system(size: 15, weight: .regular))
-                        .foregroundColor(.white)
-                        .lineLimit(7) // Birden fazla satıra izin verir
-                        .padding(.top, 4)
-                    
+                    AppText(
+                        text: popular.year,
+                        style: .cardTitle,
+                        color: .white)
+                    AppText(
+                        text: popular.info,
+                        style: .detailInfo)
+                    .padding(.top, 4)
                 }.padding(.top,5)
                     .padding(.trailing,5)
             }
         }
-        .frame(width: UIScreen.main.bounds.width - 30)
+        .containerRelativeFrame(.horizontal) { size, axis in
+            size - 30
+        }
         .cornerRadius(10)
-        .clipped() // İçeriğin (özellikle arka planın) taşmasını engeller
+        .clipped()
     }
+}
+#Preview {
+    PopularItemView(popular: .init(
+        id: 79744,
+        title: "The Rookie",
+        year: "2018",
+        rating: 8.51,
+        info: "Starting over isn't easy, especially for small-town guy John Nolan who, after a life-altering incident, is pursuing his dream of being an LAPD officer. As the force's oldest rookie, he’s met with skepticism from some higher-ups who see him as just a walking midlife crisis.",
+        category: "Crime, Drama,Comedy",
+        backdropPoster: "https://image.tmdb.org/t/p/w500/2m1Mu0xPj4SikiqkaolTRUcNtWH.jpg",
+        mainPoster: "https://image.tmdb.org/t/p/w500/bL1mwXDnH5fCxqc4S2n40hoVyoe.jpg",
+        flag: "🇬🇧"))
 }

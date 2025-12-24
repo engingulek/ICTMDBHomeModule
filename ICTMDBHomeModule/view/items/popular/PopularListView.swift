@@ -6,23 +6,17 @@
 //
 
 import SwiftUI
+import ICTMDBViewKit
 struct PopularListView: View {
     let list : [PopularTVShowPresentation]
+    var sectionHeaderData:SectionHeaderData
     var body: some View {
         VStack{
-            HStack{
-                Image(systemName: "flame.fill")
-                    .resizable()
-                    .frame(width: 20,height: 25)
-                    .foregroundStyle(.red)
-                Text("Popular List")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                Spacer()
-                Text("All List")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-            }.padding(.horizontal)
+            SectionHeader(
+                iconName: sectionHeaderData.icon,
+                iconColor: .red,
+                title:sectionHeaderData.title) {
+            }
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(list,id: \.id) { popular in

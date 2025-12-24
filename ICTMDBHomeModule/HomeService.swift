@@ -29,7 +29,7 @@ final class HomeService : HomeServiceProtocol {
             }
         }
     }
-    
+
     func getAiring(completion: @escaping (Result<[AiringToday], any Error>) -> Void) {
         let request = AiringTodayRequest(language: .en, page: 1)
         networkManager.execute(request) { result in
@@ -41,7 +41,4 @@ final class HomeService : HomeServiceProtocol {
             }
         }
     }
-    
-   
-    
 }
