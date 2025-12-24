@@ -37,6 +37,3 @@ struct AiringTodayItem: View {
     }
 }
 
-#Preview("Airing Today Item",traits:.fixedLayout(width: 150, height: 250)) {
-    AiringTodayItem(item: .init(id: 1, title: "The Rookie", flag: "🇬🇧", rating: 8.51, mainPoster: "https://image.tmdb.org/t/p/w500/bL1mwXDnH5fCxqc4S2n40hoVyoe.jpg"))
-}
