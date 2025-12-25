@@ -12,6 +12,7 @@ struct AiringListView: View {
     let list:[AiringTodayPresentation]
     var sectionHeaderData:SectionHeaderData
     var onTappedAllList:() -> Void
+    var onTappedItem:(Int?) -> Void
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -23,7 +24,9 @@ struct AiringListView: View {
                           title: sectionHeaderData.title, onTappedAllList: onTappedAllList)
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(list, id: \.id) { item in
-                    AiringTodayItem(item: item)
+                    AiringTodayItem(item: item).onTapGesture {
+                        onTappedItem(item.id)
+                    }
                 }
             }
         }
@@ -40,5 +43,5 @@ struct AiringListView: View {
         .init(id: 2, title: "IT: Welcome to Derry", flag: "🇬🇧",
               rating: 8.51,
               mainPoster: "https://image.tmdb.org/t/p/w500/nyy3BITeIjviv6PFIXtqvc8i6xi.jpg")],
-                   sectionHeaderData: .init(icon: "circle..fill", title: "Airing Today"), onTappedAllList: {})
+                   sectionHeaderData: .init(icon: "circle..fill", title: "Airing Today"), onTappedAllList: {}, onTappedItem: {_ in })
 }

@@ -11,6 +11,7 @@ struct PopularListView: View {
     let list : [PopularTVShowPresentation]
     var sectionHeaderData:SectionHeaderData
     var onTappedAllList:() -> Void
+    var onTappedItem:(Int?) -> Void
     var body: some View {
         VStack{
             SectionHeader(
@@ -23,6 +24,9 @@ struct PopularListView: View {
                 HStack(spacing: 10) {
                     ForEach(list,id: \.id) { item in
                        PopularItemView(item: item)
+                            .onTapGesture {
+                                onTappedItem(item.id)
+                            }
                             
                             
                     }

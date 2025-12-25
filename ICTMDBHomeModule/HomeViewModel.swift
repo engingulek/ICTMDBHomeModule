@@ -25,9 +25,12 @@ protocol HomeViewModelProtocol : ObservableObject{
     var airingTodaySectionHeaderData:SectionHeaderData{get}
     var isLoading:Bool {get}
     var isError:(state:Bool,message:String) {get}
+    var toAllList: ((onTappedAllList) -> Void)? { get set }
+    var toDetail:((Int?) -> Void)?  { get set }
     func onAppear()
     func onTappedAllListAction(_ action:onTappedAllList)
-    var toAllList: ((onTappedAllList) -> Void)? { get set }
+    func onTappedItem(id:Int?)
+   
 }
 
 final class HomeViewModel : HomeViewModelProtocol {
@@ -42,6 +45,7 @@ final class HomeViewModel : HomeViewModelProtocol {
     @Published var isLoading: Bool = false
     @Published var isError: (state:Bool,message:String) = (state:false,message:"")
     var toAllList: ((onTappedAllList) -> Void)?
+    var toDetail:((Int?)->Void)?
     private var isPopularLoading : Bool = false
     private var isAiringLoading : Bool = false
     private var service : HomeServiceProtocol
@@ -91,5 +95,9 @@ final class HomeViewModel : HomeViewModelProtocol {
     
     func onTappedAllListAction(_ action: onTappedAllList) {
         toAllList?(action)
+    }
+    
+    func onTappedItem(id: Int?) {
+        toDetail?(id)
     }
 }
