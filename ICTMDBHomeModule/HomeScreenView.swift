@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-import Kingfisher
+import ICTMDBNavigationManagerSwiftUI
 import ICTMDBViewKit
 struct HomeScreenView<VM:HomeViewModelProtocol>: View {
     @StateObject var viewModel:VM
+    @EnvironmentObject private var navigation:Navigation
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -25,8 +26,16 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
                 }else{
                     ScrollView {
                         VStack(spacing:20){
-                            PopularListView(list: viewModel.popularList, sectionHeaderData: viewModel.popularSectionHeaderData)
-                            AiringListView(list: viewModel.airingList, sectionHeaderData: viewModel.airingTodaySectionHeaderData)
+                            PopularListView(
+                                list: viewModel.popularList,
+                                sectionHeaderData: viewModel.popularSectionHeaderData) {
+                                    viewModel.onTappedAllListAction(.popular)
+                                }
+                            AiringListView(
+                                list: viewModel.airingList,
+                                sectionHeaderData: viewModel.airingTodaySectionHeaderData){
+                                viewModel.onTappedAllListAction(.airingToday)
+                            }
                             Spacer()
                         }}
                 }
@@ -35,10 +44,21 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
         }
         .onAppear{
             viewModel.onAppear()
+            viewModel.toAllList = { action in
+                switch action {
+                    
+                case .popular:
+                    navigation.push(.allList(.popular))
+                case .airingToday:
+                    navigation.push(.allList(.airingToday))
+                }
+                
+            }
         }
     }
 }
 
 #Preview {
-    ICTMDBHomeModule.createModule()
+    let module = ICTMDBHomeModule()
+    module.createHomeModule()
 }

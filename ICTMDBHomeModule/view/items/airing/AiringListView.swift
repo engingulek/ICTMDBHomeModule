@@ -11,6 +11,7 @@ import ICTMDBViewKit
 struct AiringListView: View {
     let list:[AiringTodayPresentation]
     var sectionHeaderData:SectionHeaderData
+    var onTappedAllList:() -> Void
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -19,8 +20,7 @@ struct AiringListView: View {
         VStack{
             SectionHeader(iconName: sectionHeaderData.icon,
                           iconColor: .green,
-                          title: sectionHeaderData.title) {
-            }
+                          title: sectionHeaderData.title, onTappedAllList: onTappedAllList)
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(list, id: \.id) { item in
                     AiringTodayItem(item: item)
@@ -40,5 +40,5 @@ struct AiringListView: View {
         .init(id: 2, title: "IT: Welcome to Derry", flag: "🇬🇧",
               rating: 8.51,
               mainPoster: "https://image.tmdb.org/t/p/w500/nyy3BITeIjviv6PFIXtqvc8i6xi.jpg")],
-                   sectionHeaderData: .init(icon: "circle..fill", title: "Airing Today"))
+                   sectionHeaderData: .init(icon: "circle..fill", title: "Airing Today"), onTappedAllList: {})
 }

@@ -13,6 +13,11 @@ struct SectionHeaderData {
     let title:String
 }
 
+enum onTappedAllList {
+    case popular
+    case airingToday
+}
+
 protocol HomeViewModelProtocol : ObservableObject{
     var popularList:[PopularTVShowPresentation] {get}
     var airingList:[AiringTodayPresentation] {get}
@@ -21,6 +26,8 @@ protocol HomeViewModelProtocol : ObservableObject{
     var isLoading:Bool {get}
     var isError:(state:Bool,message:String) {get}
     func onAppear()
+    func onTappedAllListAction(_ action:onTappedAllList)
+    var toAllList: ((onTappedAllList) -> Void)? { get set }
 }
 
 final class HomeViewModel : HomeViewModelProtocol {
@@ -34,7 +41,7 @@ final class HomeViewModel : HomeViewModelProtocol {
         title: LocalizableUI.airingToday.localized)
     @Published var isLoading: Bool = false
     @Published var isError: (state:Bool,message:String) = (state:false,message:"")
-    
+    var toAllList: ((onTappedAllList) -> Void)?
     private var isPopularLoading : Bool = false
     private var isAiringLoading : Bool = false
     private var service : HomeServiceProtocol
@@ -51,7 +58,8 @@ final class HomeViewModel : HomeViewModelProtocol {
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                popularList = data.map { PopularTVShowPresentation(tvShow: $0) }
+                let list = data.map { PopularTVShowPresentation(tvShow: $0) }
+                popularList = list.sorted{ $0.rating > $1.rating}
                 isPopularLoading = false
                 isLoading = isPopularLoading || isAiringLoading
                 
@@ -79,5 +87,9 @@ final class HomeViewModel : HomeViewModelProtocol {
                 isError = (state:true,message:LocalizableUI.somethingWentWrong.localized)
             }
         }
+    }
+    
+    func onTappedAllListAction(_ action: onTappedAllList) {
+        toAllList?(action)
     }
 }

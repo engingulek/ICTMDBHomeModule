@@ -10,17 +10,20 @@ import ICTMDBViewKit
 struct PopularListView: View {
     let list : [PopularTVShowPresentation]
     var sectionHeaderData:SectionHeaderData
+    var onTappedAllList:() -> Void
     var body: some View {
         VStack{
             SectionHeader(
                 iconName: sectionHeaderData.icon,
                 iconColor: .red,
-                title:sectionHeaderData.title) {
-            }
+                title: sectionHeaderData.title,
+                onTappedAllList: onTappedAllList)
+          
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach(list,id: \.id) { popular in
-                       PopularItemView(popular: popular)
+                    ForEach(list,id: \.id) { item in
+                       PopularItemView(item: item)
+                            
                             
                     }
                 }
