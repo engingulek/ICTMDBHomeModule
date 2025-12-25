@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 import ICTMDBNetworkManagerKit
 import ICTMDBModularProtocols
-final class ICTMDBHomeModule : @MainActor HomeModuleProtocol {
+public final class ICTMDBHomeModule : @MainActor HomeModuleProtocol {
     public init() {}
-    @MainActor  func createHomeModule() -> AnyView {
+    @MainActor public func createHomeModule() -> AnyView {
         let view = HomeScreenView(viewModel: HomeViewModel(service: HomeService(networkManager: NetworkManager())))
         return AnyView(view)
     }
