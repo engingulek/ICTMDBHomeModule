@@ -16,7 +16,6 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        //  viewModel.onTappedAllListAction(.popular)
         VStack{
             if viewModel.isLoading {
                 ProgressView()
@@ -48,8 +47,9 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
             }
         }
         .onAppear{
-            viewModel.onAppear()
-            viewModel.toAllList = { action in
+           
+            viewModel.toAllList = {[weak navigation] action in
+                guard let navigation else {return}
                 switch action {
                 case .popular:
                     navigation.push(.allList(.popular))
@@ -58,7 +58,8 @@ struct HomeScreenView<VM:HomeViewModelProtocol>: View {
                 }
             }
             
-            viewModel.toDetail = { id in
+            viewModel.toDetail = {[weak navigation] id in
+                guard let navigation else {return}
                 navigation.push(.detail(id))
             }
         }

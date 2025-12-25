@@ -27,7 +27,6 @@ protocol HomeViewModelProtocol : ObservableObject{
     var isError:(state:Bool,message:String) {get}
     var toAllList: ((onTappedAllList) -> Void)? { get set }
     var toDetail:((Int?) -> Void)?  { get set }
-    func onAppear()
     func onTappedAllListAction(_ action:onTappedAllList)
     func onTappedItem(id:Int?)
    
@@ -51,9 +50,12 @@ final class HomeViewModel : HomeViewModelProtocol {
     private var service : HomeServiceProtocol
     init(service: HomeServiceProtocol) {
         self.service = service
+        loadData()
     }
     
-    func onAppear() {
+
+    
+    private func loadData() {
         isLoading = true
         isPopularLoading = true
         isAiringLoading = true
