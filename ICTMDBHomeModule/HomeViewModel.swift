@@ -53,7 +53,10 @@ final class HomeViewModel : HomeViewModelProtocol {
         loadData()
     }
     
-
+    deinit {
+        print("DEBUG: HomeViewModel removed ✅")
+    }
+    
     
     private func loadData() {
         isLoading = true
