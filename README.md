@@ -1,6 +1,6 @@
 # ICTMDBHomeModule
 
-This module is designed for the <a href="https://github.com/engingulek/ICTMDBApp">[ICTMDBAPP]</a>.
+This module is designed for the <a href="https://github.com/engingulek/ICTMDBApp/tree/version/swiftui">[ICTMDBAPP]</a>.
 It is prepared specifically for the home screen.
 
 
