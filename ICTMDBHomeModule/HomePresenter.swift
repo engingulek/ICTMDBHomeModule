@@ -51,28 +51,28 @@ final class HomePresenter {
 
 // MARK: - ViewToPresenterHomeProtocol
 /// Handles actions triggered by the View layer.
-
+@MainActor
 extension HomePresenter: ViewToPresenterHomeProtocol {
-  
     
-   
+    
+    
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
         view?.setNavigationTitle(title: LocalizableUI.homePageNavTitle.localized)
         
-        Task {@MainActor in
-          await loadData()
+        Task {
+            await loadData()
         }
     }
     
-
-    @MainActor
+    
+    
     func loadData() async {
         view?.startLoading()
         await interactor.loadData()
         view?.finishLoading()
     }
-
+    
 }
 
 
@@ -100,11 +100,11 @@ extension HomePresenter {
         }
     }
     
-
+    
     func numberOfSections() -> Int {
         SectionType.allCases.count
     }
-
+    
     func cellForItem(section: Int, item: Int) -> CellItemType {
         guard let sectionType = SectionType(rawValue: section) else { return .none }
         switch sectionType {
@@ -117,7 +117,7 @@ extension HomePresenter {
         }
     }
     
-
+    
     func didSelectItem(section: Int, item: Int) {
         guard let sectionType = SectionType(rawValue: section) else { return }
         switch sectionType {
@@ -154,7 +154,7 @@ extension HomePresenter {
         return headerViewItem
     }
     
-
+    
     func onTappedTitleButton(buttonType: TitleForSectionButtonType, section: Int) {
         guard let sectionType = SectionType(rawValue: section) else { return }
         
@@ -195,30 +195,30 @@ extension HomePresenter {
 /// Receives data from the Interactor and updates the view.
 extension HomePresenter: InteractorToPresenterHomeProtocol {
     func sendError() {
-      
+        
         view?.sendError(errorState: (isHidden: true,
                                      message: LocalizableUI.somethingWentWrong.localized))
         view?.relaodCollectionView()
-      
+        
     }
     
     
     func sendAiringTvShows(_ data: [AiringToday]) {
-     
+        
         airingTodayShows = data.map { AiringTodayPresentation(tvShow: $0) }
         view?.sendError(errorState: (isHidden: false, message: ""))
         view?.relaodCollectionView()
-      
+        
     }
     
     func sendPopularTvShows(_ data: [PopularTvShows]) {
-      
+        
         popularTvShows = data
             .map { PopularTVShowPresentation(tvShow: $0) }
             .sorted { $0.rating > $1.rating }
         view?.sendError(errorState: (isHidden: false, message: ""))
         view?.relaodCollectionView()
-      
+        
     }
 }
 
