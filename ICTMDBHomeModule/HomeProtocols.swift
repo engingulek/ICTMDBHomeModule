@@ -63,6 +63,7 @@ protocol PresenterToInteractorHomeProtocol:Sendable,AnyObject {
 
 // MARK: - Interactor → Presenter
 /// Protocol for sending data or errors from Interactor to Presenter.
+@MainActor
 protocol InteractorToPresenterHomeProtocol : AnyObject{
     
     func sendData(popular:[PopularTvShows],airingToday:[AiringToday])
