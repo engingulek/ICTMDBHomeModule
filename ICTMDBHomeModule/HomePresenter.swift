@@ -14,7 +14,7 @@ import UIKit
 /// Handles the presentation logic for the Home module.
 
 final class HomePresenter {
-    
+    private var loadTask: Task<Void, Never>?
     // MARK: - Typealias
     /// Typealias for cell items displayed in collection view
     typealias CellItem = CellItemType
@@ -46,6 +46,10 @@ final class HomePresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    deinit {
+        loadTask?.cancel()
+    }
 }
 
 
@@ -60,7 +64,7 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
         view?.setBackColorAble(color: "backColor")
         view?.setNavigationTitle(title: LocalizableUI.homePageNavTitle.localized)
         
-        Task {
+        loadTask = Task {
             await loadData()
         }
     }
@@ -72,6 +76,8 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
         await interactor.loadData()
         view?.finishLoading()
     }
+    
+   
     
 }
 

@@ -36,14 +36,12 @@ final class HomeInteractor: PresenterToInteractorHomeProtocol,@unchecked Sendabl
         do {
             let (popularResult, airingResult) = try await (popularMovies, airingMovies)
             
-            await MainActor.run {
-                        presenter?.sendPopularTvShows(popularResult.results)
-                        presenter?.sendAiringTvShows(airingResult.results)
-                    }
+            await presenter?.sendPopularTvShows(popularResult.results)
+            await presenter?.sendAiringTvShows(airingResult.results)
+                    
         } catch {
-            await MainActor.run {
-                        presenter?.sendError()
-                    }
+            await presenter?.sendError()
+                    
         }
     }
 }
