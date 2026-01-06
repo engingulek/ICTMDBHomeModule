@@ -44,10 +44,11 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        presenter?.viewDidLoad()
+       
         setupCollectionView()
         collectionPrepareView()
         setupUI()
+        presenter?.viewDidLoad()
        
     }
     
