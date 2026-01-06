@@ -200,6 +200,7 @@ extension HomePresenter {
 // MARK: - InteractorToPresenterHomeProtocol
 /// Receives data from the Interactor and updates the view.
 extension HomePresenter: InteractorToPresenterHomeProtocol {
+    
     func sendError() {
         
         view?.sendError(errorState: (isHidden: true,
@@ -208,23 +209,14 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         
     }
     
-    
-    func sendAiringTvShows(_ data: [AiringToday]) {
-        
-        airingTodayShows = data.map { AiringTodayPresentation(tvShow: $0) }
-        view?.sendError(errorState: (isHidden: false, message: ""))
-        view?.relaodCollectionView()
-        
-    }
-    
-    func sendPopularTvShows(_ data: [PopularTvShows]) {
-        
-        popularTvShows = data
+    func sendData(popular: [PopularTvShows], airingToday: [AiringToday]) {
+        popularTvShows = popular
             .map { PopularTVShowPresentation(tvShow: $0) }
             .sorted { $0.rating > $1.rating }
+        airingTodayShows = airingToday.map { AiringTodayPresentation(tvShow: $0) }
         view?.sendError(errorState: (isHidden: false, message: ""))
         view?.relaodCollectionView()
-        
     }
+    
 }
 
