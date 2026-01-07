@@ -7,8 +7,6 @@
 
 import ICTMDBViewKit
 import GenericCollectionViewKit
-
-
 import UIKit
 
 // MARK: - Typealias
@@ -51,7 +49,7 @@ protocol PresenterToViewHomeProtocol: AnyObject, Ables {
 // MARK: - Presenter → Interactor
 /// Protocol defining communication from Presenter to Interactor.
 
-protocol PresenterToInteractorHomeProtocol:Sendable,AnyObject {
+protocol PresenterToInteractorHomeProtocol: Sendable, AnyObject {
 
     /// Reference to the Presenter layer
     var presenter: InteractorToPresenterHomeProtocol? { get set }
@@ -60,12 +58,11 @@ protocol PresenterToInteractorHomeProtocol:Sendable,AnyObject {
     func loadData() async
 }
 
-
 // MARK: - Interactor → Presenter
 /// Protocol for sending data or errors from Interactor to Presenter.
-protocol InteractorToPresenterHomeProtocol : AnyObject{
+protocol InteractorToPresenterHomeProtocol: AnyObject {
     
-    func sendData(popular:[PopularTvShows],airingToday:[AiringToday])
+    func sendData(popular: [PopularTvShows], airingToday: [AiringToday])
     
     /// Sends an error state
     func sendError()
@@ -83,6 +80,3 @@ protocol PresenterToRouterHomeProtocol {
     /// Navigates to Detail page
     func toDetailPage(view: PresenterToViewHomeProtocol?, id: Int?)
 }
-
-
-

@@ -10,10 +10,8 @@ import ICTMDBModularProtocols
 import DependencyKit
 import ICTMDBViewKit
 
-import UIKit
-
 /// `HomeRouter` is responsible for navigation in the Home module.
-public class HomeRouter:  PresenterToRouterHomeProtocol {
+public class HomeRouter: PresenterToRouterHomeProtocol {
     
     // MARK: - Navigation to All List Page
     
