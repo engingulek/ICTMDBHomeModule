@@ -36,7 +36,6 @@ final class HomePresenter {
     /// List of airing today shows for UI display
     private var airingTodayShows: [AiringTodayPresentation] = []
     
-    
     // MARK: - Init
     init(view: PresenterToViewHomeProtocol?,
          interactor: PresenterToInteractorHomeProtocol,
@@ -52,13 +51,10 @@ final class HomePresenter {
     }
 }
 
-
 // MARK: - ViewToPresenterHomeProtocol
 /// Handles actions triggered by the View layer.
 @MainActor
 extension HomePresenter: ViewToPresenterHomeProtocol {
-    
-    
     
     func viewDidLoad() {
         view?.setBackColorAble(color: "backColor")
@@ -69,18 +65,13 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
         }
     }
     
-    
-    
     func loadData() async {
         view?.startLoading()
         await interactor.loadData()
         view?.finishLoading()
     }
     
-   
-    
 }
-
 
 // MARK: - CollectionViewSources
 /// Provides collection view data, layout, and interaction logic.
@@ -106,7 +97,6 @@ extension HomePresenter {
         }
     }
     
-    
     func numberOfSections() -> Int {
         SectionType.allCases.count
     }
@@ -123,7 +113,6 @@ extension HomePresenter {
         }
     }
     
-    
     func didSelectItem(section: Int, item: Int) {
         guard let sectionType = SectionType(rawValue: section) else { return }
         switch sectionType {
@@ -137,7 +126,7 @@ extension HomePresenter {
     }
     
     func titleForSection(at section: Int) -> GenericCollectionViewKit.HeaderViewItem {
-        var headerViewItem:HeaderViewItem
+        var headerViewItem: HeaderViewItem
         guard let sectionType = SectionType(rawValue: section) else {
             headerViewItem = .init(title: "", sizeType: .empty)
             return headerViewItem
@@ -159,7 +148,6 @@ extension HomePresenter {
         }
         return headerViewItem
     }
-    
     
     func onTappedTitleButton(buttonType: TitleForSectionButtonType, section: Int) {
         guard let sectionType = SectionType(rawValue: section) else { return }
@@ -196,7 +184,6 @@ extension HomePresenter {
     }
 }
 
-
 // MARK: - InteractorToPresenterHomeProtocol
 /// Receives data from the Interactor and updates the view.
 extension HomePresenter: InteractorToPresenterHomeProtocol {
@@ -219,4 +206,3 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
     }
     
 }
-

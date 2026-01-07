@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import ICTMDBViewKit
 
-//MARK: AiringTodayCell
+// MARK: AiringTodayCell
 final class AiringTodayCell: UICollectionViewCell {
     static let identifier = "AiringTodayCell"
     private lazy var posterImageView = ImageViewFactory.createImageView(ofType: .main)
@@ -22,7 +22,6 @@ final class AiringTodayCell: UICollectionViewCell {
     
     private let ratingView = RatingViewFactory.createRatingView(with: .airingToday)
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -32,7 +31,7 @@ final class AiringTodayCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: SetupUI
+    // MARK: SetupUI
     private func setupUI() {
         
         clipsToBounds = true
@@ -65,7 +64,7 @@ final class AiringTodayCell: UICollectionViewCell {
         }
     }
     
-    //MARK: Configure
+    // MARK: Configure
     func configure(with cellItem: AiringTodayPresentation) {
         
         posterImageView.setImageWithKigfisher(with: cellItem.mainPoster)
