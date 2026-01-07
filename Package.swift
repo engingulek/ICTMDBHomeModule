@@ -21,6 +21,7 @@ let package = Package(
         .package(url: "https://github.com/engingulek/ICTMDBNetworkManagerKit", from: "0.0.5"),
         .package(url: "https://github.com/engingulek/ICTMDBViewKit", from: "0.0.7"),
         .package(url: "https://github.com/engingulek/HPDependencyKit", from: "1.0.0"),
+        .package(url: "https://github.com/realm/SwiftLint", from: "0.54.0")
     ],
     targets: [
         .target(
@@ -33,7 +34,10 @@ let package = Package(
                 .product(name: "ICTMDBViewKit", package: "ICTMDBViewKit"),
                 .product(name: "DependencyKit", package: "HPDependencyKit")
             ],
-            path: "ICTMDBHomeModule"
+            path: "ICTMDBHomeModule",
+            plugins: [
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
+            ]
         ),
         .testTarget(
             name: "ICTMDBHomeModuleTests",

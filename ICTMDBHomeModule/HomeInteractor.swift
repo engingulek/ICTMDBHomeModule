@@ -8,8 +8,7 @@
 import Foundation
 import ICTMDBNetworkManagerKit
 
-
-final class HomeInteractor: PresenterToInteractorHomeProtocol,@unchecked Sendable {
+final class HomeInteractor: PresenterToInteractorHomeProtocol, @unchecked Sendable {
   
     // MARK: - Properties
     

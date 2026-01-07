@@ -11,14 +11,13 @@ enum CellItemType {
     case none
 }
 
-//MARK: SectionType
+// MARK: SectionType
 enum SectionType: Int, CaseIterable {
     case popular
     case airingToday
 }
 
-
-//MARK: HomePageErrorType
+// MARK: HomePageErrorType
 enum HomePageErrorType {
     case popular
     case airingToday

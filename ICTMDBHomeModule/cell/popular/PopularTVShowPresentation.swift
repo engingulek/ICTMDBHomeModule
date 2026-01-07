@@ -6,37 +6,17 @@
 //
 
 import ICTMDBViewKit
-//MARK: PopularTVShowPresentation
+// MARK: PopularTVShowPresentation
 struct PopularTVShowPresentation: Equatable {
-    var id:Int?
+    var id: Int?
     var title: String
     var year: String
     var rating: Double
-    var info:String
-    var backdropPoster:String
-    var mainPoster:String
-    var flag:String
-    
-    init(id:Int?,
-        title: String,
-        year: String,
-        rating: Double,
-        info:String,
-        category:String,
-        backdropPoster:String,
-        mainPoster:String,
-        flag : String) {
-        self.id = id
-        self.title = title
-        self.year = year
-        self.rating = rating
-        self.info = info
-        self.backdropPoster = backdropPoster
-        self.mainPoster = mainPoster
-        self.flag = flag
-    }
+    var info: String
+    var backdropPoster: String
+    var mainPoster: String
+    var flag: String
 }
-
 
 extension PopularTVShowPresentation {
     public init(tvShow: PopularTvShows) {

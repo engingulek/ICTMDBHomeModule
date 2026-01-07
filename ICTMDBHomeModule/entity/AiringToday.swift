@@ -5,8 +5,8 @@
 //  Created by Engin Gülek on 12.11.2025.
 //
 
-//MARK: AiringToday
-struct AiringToday: Codable,Sendable {
+// MARK: AiringToday
+struct AiringToday: Codable, Sendable {
     let adult: Bool
     let backdropPath: String?
     let genreIDS: [Int]?
