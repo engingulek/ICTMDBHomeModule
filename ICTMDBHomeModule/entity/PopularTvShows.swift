@@ -6,7 +6,7 @@
 //
 
 // MARK: - PopularTvShows
-struct PopularTvShows: Codable,Sendable {
+struct PopularTvShows: Codable, Sendable {
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?

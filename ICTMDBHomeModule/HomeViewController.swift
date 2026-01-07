@@ -11,94 +11,72 @@ import GenericCollectionViewKit
 import ICTMDBViewKit
 import SnapKit
 
-
 // MARK: - HomeViewController
 /// The main view controller of the Home module.
 final class HomeViewController: UIViewController {
-    
     // MARK: - Properties
-    
     /// Presenter reference (connects View and Presenter in VIPER)
     var presenter: (any ViewToPresenterHomeProtocol)?
-    
     /// Main collection view
     private var collectionView: UICollectionView!
-    
     /// Loading indicator for API operations
     private let acitvityIndicator = UIActivityIndicatorView.baseActivityIndicator()
-    
     /// Generic collection view data source
     private var dataSource: GenericCollectionDataSource<HomePresenter>?
-    
     /// Generic delegate handler for collection view
     private var delegateSource: GenericCollectionDelegate<HomePresenter>?
-    
     /// Collection view layout provider
     private var layout: GenericCollectionLayoutProvider<HomePresenter>?
-    
     /// Label to display error messages
     private var errorMessageLabeal = UILabel()
-    
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-       
         setupCollectionView()
         collectionPrepareView()
         setupUI()
         presenter?.viewDidLoad()
-       
     }
-    
-    
     // MARK: - Setup Methods
 
     /// Sets up the collection view and its layout.
     private func setupCollectionView() {
         guard let presenter = presenter as? HomePresenter else { return }
         layout = GenericCollectionLayoutProvider<HomePresenter>(source: presenter)
-        
         collectionView = UICollectionView(frame: view.bounds,
                                           collectionViewLayout: layout!.createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-   
         collectionView.register(PopularCell.self,
                                 forCellWithReuseIdentifier: PopularCell.identifier)
         collectionView.register(AiringTodayCell.self,
                                 forCellWithReuseIdentifier: AiringTodayCell.identifier)
-        
         collectionView.register(CHeaderView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: String(describing: CHeaderView.self))
     }
-    
-    
     /// Prepares and assigns the collection view's data source and delegate.
     private func collectionPrepareView() {
         guard let presenter = presenter as? HomePresenter else { return }
-        
-        dataSource = GenericCollectionDataSource(source: presenter) { identifier, cell, item in
+        dataSource = GenericCollectionDataSource(source: presenter) { _, cell, item in
             guard let item = item as? CellItemType else { return }
-            
             switch item {
             case .popular(let item):
-                if let c = cell as? PopularCell { c.configure(with: item) }
+                if let cell = cell as? PopularCell {
+                    cell.configure(with: item)
+                }
             case .airing(let value):
-                if let c = cell as? AiringTodayCell { c.configure(with: value) }
+                if let cell = cell as? AiringTodayCell {
+                    cell.configure(with: value)
+                }
             case .none:
                 break
             }
         }
-        
         delegateSource = GenericCollectionDelegate<HomePresenter>(source: presenter)
         collectionView.dataSource = dataSource
         collectionView.delegate = delegateSource
         view.addSubview(collectionView)
     }
-    
     
     /// Sets up the general user interface elements.
     private func setupUI() {
@@ -108,7 +86,6 @@ final class HomeViewController: UIViewController {
         }
     }
 }
-
 
 // MARK: - PresenterToViewHomeProtocol
 /// Implements the methods that allow the presenter to update the view.
@@ -132,7 +109,6 @@ extension HomeViewController: @MainActor PresenterToViewHomeProtocol {
         errorMessageLabeal.isHidden = !errorState.isHidden
     }
 }
-
 
 // MARK: - Preview
 #Preview {

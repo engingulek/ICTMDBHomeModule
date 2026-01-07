@@ -6,25 +6,13 @@
 //
 import ICTMDBViewKit
 
-//MARK: AiringTodayPresentation
+// MARK: AiringTodayPresentation
 struct AiringTodayPresentation: Equatable {
-    var id:Int?
+    var id: Int?
     var title: String
     var flag: String
     var rating: Double
-    var mainPoster:String
-
-    init(id:Int?,
-        title: String,
-        flag: String,
-        rating: Double,
-        mainPoster:String) {
-        self.id = id
-        self.title = title
-        self.flag = flag
-        self.rating = rating
-        self.mainPoster = mainPoster
-    }
+    var mainPoster: String
 }
 
 extension AiringTodayPresentation {

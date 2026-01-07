@@ -7,8 +7,8 @@
 
 import ICTMDBNetworkManagerKit
 
-//MARK: AiringTodayRequest
-struct AiringTodayRequest :NetworkRequest {
+// MARK: AiringTodayRequest
+struct AiringTodayRequest: NetworkRequest {
     
     typealias Response = DataResult<AiringToday>
     var language: RequestLanguage

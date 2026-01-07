@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import ICTMDBViewKit
 
-//MARK: PopularCell
+// MARK: PopularCell
 final class PopularCell: UICollectionViewCell {
     static let identifier: String = "PopularCell"
     
@@ -33,7 +33,6 @@ final class PopularCell: UICollectionViewCell {
     private let mainPoster = ImageViewFactory.createImageView(ofType: .main)
     private let posterBGBlurView = BlurFactory.createBlurView(ofType: .dark)
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -44,13 +43,13 @@ final class PopularCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: setupUI
+    // MARK: setupUI
     private func setupUI() {
         layer.cornerRadius = 10
         clipsToBounds = true
     }
     
-    //MARK: Configure
+    // MARK: Configure
     func configure(with cellItem: PopularTVShowPresentation) {
         mainPoster.setImageWithKigfisher(with: cellItem.mainPoster)
         posterBGImageView.setImageWithKigfisher(with: cellItem.backdropPoster)
@@ -61,7 +60,7 @@ final class PopularCell: UICollectionViewCell {
         infoLabel.text = cellItem.info
     }
     
-    //MARK: ConfigureUI
+    // MARK: ConfigureUI
     func configureUI() {
         contentView.addSubview(posterBGContainerView)
         posterBGContainerView.addSubview(posterBGImageView)
@@ -79,7 +78,6 @@ final class PopularCell: UICollectionViewCell {
         posterBGImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         
         posterBGBlurView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -121,6 +119,4 @@ final class PopularCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(-5)
         }
     }
-    
-    
 }
