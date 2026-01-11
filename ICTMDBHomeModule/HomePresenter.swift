@@ -8,7 +8,6 @@
 import Foundation
 import GenericCollectionViewKit
 import ICTMDBViewKit
-import UIKit
 
 // MARK: - HomePresenter
 /// Handles the presentation logic for the Home module.
